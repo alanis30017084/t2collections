@@ -11,22 +11,26 @@ namespace ArrayRecap
         static void Main(string[] args)
         {
             // Task 3
+            Console.WriteLine("Generates a random unique number between 1.9 and 2.0!\n");
 
-            int length = 100;
+            int length = 10;
             Random rand = new Random();
-
-            int[] numbers = new int[length];
+            
+            double[] numbers = new double[length];
             for (int i = 0; i < length; i++)
             {
-                int temp = rand.Next(1, 101);
+                // .NextDouble() returns a double >= 0.0 and less than 1.0
+                // Defining range for doubles: NextDouble() * (maxNum - minNum) + minNum
+
+                double temp = rand.NextDouble() * (2.0 - 1.9) + 1.9;
                 while (numbers.Contains(temp))
-                    temp = rand.Next(1, 101);
+                    temp = rand.NextDouble() * (2.0 - 1.9) + 1.9;
 
                 numbers[i] = temp;
             }
 
-            foreach (int x in numbers)
-                Console.Write(x + ", ");
+            foreach (double x in numbers)
+                Console.WriteLine(x);
             Console.ReadKey();
         }
         
